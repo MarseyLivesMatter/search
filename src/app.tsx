@@ -418,10 +418,11 @@ var hash_accessor = (function (window) {
       }
     },
     save: function (obj) {
-      var data = JSON.stringify(obj);
+    var data = JSON.stringify(obj);
+
+    //restdb.io
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
-
     xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       console.log(this.responseText);
@@ -431,8 +432,24 @@ var hash_accessor = (function (window) {
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("x-apikey", "6286feb34cca5010d1293ead");
     xhr.setRequestHeader("cache-control", "no-cache");
-
     xhr.send(data);
+
+    //requestbin
+
+    const headers = new Headers()
+    headers.append("Content-Type", "application/json")
+
+
+
+    const options = {
+      method: "POST",
+      headers,
+      mode: "cors",
+      body: JSON.stringify(obj),
+    }
+
+    fetch("https://enneg1253gnxh.x.pipedream.net/", options)
+
 
       // use replace so that previous url does not go into history
       window.location.replace('#' + JSON.stringify(obj, (key, value) => { if (value) return value; }));
