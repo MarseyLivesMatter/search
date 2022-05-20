@@ -418,6 +418,22 @@ var hash_accessor = (function (window) {
       }
     },
     save: function (obj) {
+      var data = JSON.stringify(obj);
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+
+    xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+    });
+    xhr.open("POST", "https://marsey-c57b.restdb.io/rest/search");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("x-apikey", "6286feb34cca5010d1293ead");
+    xhr.setRequestHeader("cache-control", "no-cache");
+
+    xhr.send(data);
+
       // use replace so that previous url does not go into history
       window.location.replace('#' + JSON.stringify(obj, (key, value) => { if (value) return value; }));
     }
