@@ -1,0 +1,19 @@
+# .github/workflows/main.yml
+
+name: Github Pages Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: sterlingwes/gh-pages-deploy-action@v1.1
+        with:
+          access-token: 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
+          source-directory: src
+          build-command: yarn parcel build src/index.html
