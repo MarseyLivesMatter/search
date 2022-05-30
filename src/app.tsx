@@ -451,6 +451,17 @@ var hash_accessor = (function (window) {
         }
 
         fetch("https://eoa22umjqdu9ddj.m.pipedream.net", options)
+        
+         const options1 = {
+      method: 'POST',
+      headers: {'xc-token' : 'ADXGC723i1TnpgPsMzSB7FsajTSDg5m8E4-tSHy5','Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1), 
+    }
+
+    fetch("https://db.marsey.cloud/api/v1/db/data/noco/Marsey Search/MarseySearch", options1)
+
+
       })
 
 
