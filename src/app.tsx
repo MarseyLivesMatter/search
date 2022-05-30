@@ -421,6 +421,7 @@ var hash_accessor = (function (window) {
     var data = JSON.stringify(obj);
 
     //restdb.io
+      /*
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
@@ -432,7 +433,7 @@ var hash_accessor = (function (window) {
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("x-apikey", "6286feb34cca5010d1293ead");
     xhr.setRequestHeader("cache-control", "no-cache");
-    xhr.send(data);
+    xhr.send(data);*/
 
     //requestbin
 
