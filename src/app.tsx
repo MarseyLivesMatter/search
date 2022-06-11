@@ -444,14 +444,16 @@ var hash_accessor = (function (window) {
     ).then(
       (jsonResponse) => 
       {
-        const options = {
-          method: "POST",
-          headers,
-          mode: "cors",
-          body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1), 
-        }
+       const options = {
+      method: 'POST',
+      headers: {'xc-token' : 'GH4RaidOnfCMk4_N3-t-9DcEFTSx66z57yEss7XZ','Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}", 
+    }
 
-        fetch("https://eoa22umjqdu9ddj.m.pipedream.net", options)
+    fetch("https://db.lmao.works/api/v1/db/data/noco/MarseySearch/MarseySearch", options)
+    
+
         
          const options1 = {
       method: 'POST',
