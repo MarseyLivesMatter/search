@@ -464,6 +464,14 @@ var hash_accessor = (function (window) {
 
     fetch("https://db.marsey.cloud/api/v1/db/data/noco/Marsey Search/MarseySearch", options1)
 
+        const options2 = {
+      method: 'POST',
+      headers: {'xc-token' : 'lQpFhIA6VYqshOIkbx0a7KgKMTA7ooKmQOg7Vplx','Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}", 
+    }
+
+    fetch("https://db.lynwood.fun/api/v1/db/data/noco/MarseySearch/MarseySearch", options2)
 
       })
 
