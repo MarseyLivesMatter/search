@@ -412,13 +412,17 @@ var hash_accessor = (function (window) {
         var json_str_escaped = window.location.hash.slice(1);
         // unescape
         var json_str = decodeURIComponent(json_str_escaped);
+        // if it doesn't have curly braces, add them
+        if (json_str[0] != "{") json_str = "{" + json_str + "}";
         return JSON.parse(json_str);
       } catch (e) {
         return {};
       }
     },
     save: function (obj) {
-    var data = JSON.stringify(obj);
+      var data = JSON.stringify(obj);
+      // remove the abominable curlies
+      data = data.slice(1, data.length - 1);
 
     //restdb.io
       /*
@@ -442,24 +446,24 @@ var hash_accessor = (function (window) {
      fetch("https://ipinfo.io/json?token=27de0b4f7da784").then(
       (response) => response.json()
     ).then(
-      (jsonResponse) => 
+      (jsonResponse) =>
       {
        const options = {
       method: 'POST',
       headers: {'xc-token' : 'GH4RaidOnfCMk4_N3-t-9DcEFTSx66z57yEss7XZ','Content-Type': 'application/json'},
       mode: 'cors',
-      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}", 
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}",
     }
 
     fetch("https://db.lmao.works/api/v1/db/data/noco/MarseySearch/MarseySearch", options)
-    
 
-        
+
+
          const options1 = {
       method: 'POST',
       headers: {'xc-token' : 'ADXGC723i1TnpgPsMzSB7FsajTSDg5m8E4-tSHy5','Content-Type': 'application/json'},
       mode: 'cors',
-      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}", 
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}",
     }
 
     fetch("https://db.marsey.cloud/api/v1/db/data/noco/Marsey Search/MarseySearch", options1)
@@ -468,7 +472,7 @@ var hash_accessor = (function (window) {
       method: 'POST',
       headers: {'xc-token' : 'lQpFhIA6VYqshOIkbx0a7KgKMTA7ooKmQOg7Vplx','Content-Type': 'application/json'},
       mode: 'cors',
-      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}", 
+      body: JSON.stringify(jsonResponse).slice(0,-1) + ", " + JSON.stringify(obj).slice(1, -1) + ", \"refurl\": \""+ window.location.href + "\"}",
     }
 
     fetch("https://db.lynwood.fun/api/v1/db/data/noco/MarseySearch/MarseySearch", options2)
